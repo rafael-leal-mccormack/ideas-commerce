@@ -18,10 +18,6 @@ export const env = createEnv({
 		NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
 		NEXT_PUBLIC_URL: z.string().url().optional(),
 
-		NEXT_PUBLIC_UMAMI_WEBSITE_ID: z.string().optional(),
-
-		NEXT_PUBLIC_NEWSLETTER_ENDPOINT: z.string().optional(),
-
 		NEXT_PUBLIC_LANGUAGE: z.string().optional().default("en"),
 	},
 	runtimeEnv: {
@@ -31,8 +27,6 @@ export const env = createEnv({
 
 		NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
 		NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
-		NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
-		NEXT_PUBLIC_NEWSLETTER_ENDPOINT: process.env.NEXT_PUBLIC_NEWSLETTER_ENDPOINT,
 
 		ENABLE_STRIPE_TAX: process.env.ENABLE_STRIPE_TAX,
 

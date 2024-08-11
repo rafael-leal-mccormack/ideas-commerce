@@ -11,5 +11,6 @@ export const searchProducts = unstable_cache(
 	["search", "products"],
 	{
 		tags: ["search", "products"],
+		revalidate: 600, // 10 minutes
 	},
 );

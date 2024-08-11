@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
-import type * as Commerce from "commerce-kit";
 import { JsonLd, mappedProductsToJsonLd } from "@/ui/JsonLd";
 import { YnsLink } from "@/ui/YnsLink";
 import { formatMoney } from "@/lib/utils";
 
-export const ProductList = async ({ products }: { products: Commerce.MappedProduct[] }) => {
+export const ProductList = async ({ products }: { products: any[] }) => {
 	const locale = await getLocale();
 
 	return (
@@ -33,7 +32,7 @@ export const ProductList = async ({ products }: { products: Commerce.MappedProdu
 									<div className="p-4">
 										<h2 className="text-lg font-semibold text-neutral-700">{product.name}</h2>
 										<footer className="text-sm font-medium text-neutral-900">
-											{product.default_price.unit_amount && (
+											{product.default_price?.unit_amount && (
 												<p>
 													{formatMoney({
 														amount: product.default_price.unit_amount,

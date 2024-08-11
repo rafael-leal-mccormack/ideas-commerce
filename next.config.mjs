@@ -1,20 +1,9 @@
-// @ts-check
-
 import createNextIntlPlugin from "next-intl/plugin";
 
-import MDX from "@next/mdx";
-
 const withNextIntl = createNextIntlPlugin();
-const withMDX = MDX();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	reactStrictMode: true,
-	logging: {
-		fetches: {
-			fullUrl: true,
-		},
-	},
 	images: {
 		remotePatterns: [
 			{ hostname: "files.stripe.com" },
@@ -26,7 +15,6 @@ const nextConfig = {
 	transpilePackages: ["next-mdx-remote", "commerce-kit"],
 	experimental: {
 		esmExternals: true,
-		mdxRs: true,
 		scrollRestoration: true,
 		ppr: true,
 		after: true,
@@ -44,12 +32,6 @@ const nextConfig = {
 			},
 		};
 	},
-	rewrites: async () => [
-		{
-			source: "/stats/:match*",
-			destination: "https://eu.umami.is/:match*",
-		},
-	],
 };
 
-export default withNextIntl(withMDX(nextConfig));
+export default withNextIntl(nextConfig);

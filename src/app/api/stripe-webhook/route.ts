@@ -17,7 +17,11 @@ export async function POST(request: Request) {
 	const stripe = Commerce.StripeClient({ cache: "no-store" });
 
 	const [error, event] = await unpackPromise(
-		stripe.webhooks.constructEventAsync(await request.text(), signature, env.STRIPE_WEBHOOK_SECRET),
+		stripe.webhooks.constructEventAsync(
+			await request.text(),
+			signature,
+			process.env.STRIPE_WEBHOOK_SECRET!,
+		),
 	);
 
 	if (error) {

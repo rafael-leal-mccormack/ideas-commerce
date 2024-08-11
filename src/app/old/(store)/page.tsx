@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { Metadata } from "next/types";
 import { getTranslations } from "next-intl/server";
+import * as Commerce from "commerce-kit";
+import { ProductList } from "@/ui/products/productList";
 import { CategoryBox } from "@/ui/CategoryBox";
 import AccessoriesImage from "@/images/accessories.jpg";
 import ApparelImage from "@/images/apparel.jpg";
@@ -13,6 +15,8 @@ export const metadata = {
 
 export default async function Home() {
 	const t = await getTranslations("/");
+
+	const products = await Commerce.productBrowse({ first: 6 });
 
 	return (
 		<main>
@@ -45,13 +49,13 @@ export default async function Home() {
 					/>
 				</div>
 			</section>
+			<ProductList products={products} />
 
 			<section className="w-full py-8">
 				<div className="grid gap-8 lg:grid-cols-2">
 					{[
 						{ categorySlug: "accessories", src: AccessoriesImage },
 						{ categorySlug: "apparel", src: ApparelImage },
-						{ categorySlug: "food", src: ApparelImage },
 					].map(({ categorySlug, src }) => (
 						<CategoryBox key={categorySlug} categorySlug={categorySlug} src={src} />
 					))}

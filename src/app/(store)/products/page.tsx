@@ -1,8 +1,8 @@
 import type { Metadata } from "next/types";
 import { getTranslations } from "next-intl/server";
-import * as Commerce from "commerce-kit";
 import { ProductList } from "@/ui/products/productList";
 import { publicUrl } from "@/env.mjs";
+import { stripe } from "@/lib/stripe";
 
 export const generateMetadata = async (): Promise<Metadata> => {
 	const t = await getTranslations("/products.metadata");
@@ -13,7 +13,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 };
 
 export default async function AllProductsPage() {
-	const products = await Commerce.productBrowse({ first: 100 });
+	const products = await stripe.products.list({ expand: ["data.default_price"], limit: 100 });
 	const t = await getTranslations("/products.page");
 
 	return (
@@ -21,7 +21,7 @@ export default async function AllProductsPage() {
 			<h1 className="text-3xl font-bold leading-none tracking-tight text-foreground">
 				{t("title")}
 			</h1>
-			<ProductList products={products} />
+			<ProductList products={products.data} />
 		</main>
 	);
 }
