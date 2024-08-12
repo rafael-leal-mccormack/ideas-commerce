@@ -9,6 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@mdx-js/loader": "3.0.1",
 		"@next/mdx": "15.0.0-canary.111",
 		"@radix-ui/react-checkbox": "1.1.1",
 		"@radix-ui/react-collapsible": "1.1.0",
@@ -34,7 +35,7 @@
 		"@vercel/speed-insights": "1.0.12",
 		"class-variance-authority": "0.7.0",
 		"clsx": "2.1.1",
-		"cmdk": "0.2.1",
+		"cmdk": "1.0.0",
 		"commerce-kit": "0.0.12",
 		"lucide-react": "0.427.0",
 		"next": "15.0.0-canary.111",
@@ -43,6 +44,7 @@
 		"next-themes": "0.3.0",
 		"react": "19.0.0-rc-2d2cc042-20240809",
 		"react-dom": "19.0.0-rc-2d2cc042-20240809",
+		"schema-dts": "1.1.2",
 		"sonner": "1.5.0",
 		"stripe": "16.7.0",
 		"tailwind-merge": "2.5.0",

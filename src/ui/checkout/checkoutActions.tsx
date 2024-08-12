@@ -4,28 +4,35 @@ import * as Commerce from "commerce-kit";
 import { getCartFromCookiesAction } from "@/actions/cartActions";
 import type { AddressSchema } from "@/ui/checkout/checkoutFormSchema";
 
-export const saveShippingRateAction = async ({ shippingRateId }: { shippingRateId: string }) => {
-	const cart = await getCartFromCookiesAction();
-	if (!cart) {
-		throw new Error("No cart id found in cookies");
-	}
+export const saveShippingRateAction = async ({
+  shippingRateId,
+}: {
+  shippingRateId: string;
+}) => {
+  const cart = await getCartFromCookiesAction();
+  if (!cart) {
+    throw new Error("No cart id found in cookies");
+  }
 
-	if (!shippingRateId || typeof shippingRateId !== "string") {
-		throw new Error("Invalid shipping rate id");
-	}
+  if (!shippingRateId || typeof shippingRateId !== "string") {
+    throw new Error("Invalid shipping rate id");
+  }
 
-	await Commerce.cartSaveShipping({ cartId: cart.cart.id, shippingRateId });
+  await Commerce.cartSaveShipping({ cartId: cart.cart.id, shippingRateId });
 };
 
 export const saveBillingAddressAction = async ({
-	billingAddress,
+  billingAddress,
 }: {
-	billingAddress: AddressSchema;
+  billingAddress: AddressSchema;
 }) => {
-	const cart = await getCartFromCookiesAction();
-	if (!cart) {
-		throw new Error("No cart id found in cookies");
-	}
+  const cart = await getCartFromCookiesAction();
+  if (!cart) {
+    throw new Error("No cart id found in cookies");
+  }
 
-	await Commerce.cartSaveBillingAddress({ cartId: cart.cart.id, billingAddress });
+  await Commerce.cartSaveBillingAddress({
+    cartId: cart.cart.id,
+    billingAddress: billingAddress as any,
+  });
 };

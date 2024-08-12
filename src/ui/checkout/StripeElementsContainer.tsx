@@ -19,7 +19,7 @@ export const StripeElementsContainer = ({
 	children: ReactNode;
 	client_secret?: string;
 }) => {
-	const currentLocale = useLocale();
+	const currentLocale = useLocale() as StripeElementLocale;
 	if (!client_secret) {
 		return null;
 	}
@@ -46,7 +46,7 @@ export const StripeElementsContainer = ({
 };
 
 // This was taken from `StripeElementLocale` in `@stripe/react-stripe-js`:
-const supportedStripeLocales = [
+const supportedStripeLocales: StripeElementLocale[] = [
 	"ar",
 	"bg",
 	"cs",
