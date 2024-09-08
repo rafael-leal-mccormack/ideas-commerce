@@ -43,7 +43,7 @@ export async function signup(formData: FormData) {
   };
 
   console.log(data);
-  const { data: userData, error } = await supabase.auth.admin.createUser(data);
+  const { error } = await supabase.auth.admin.createUser(data);
 
   if (error) {
     console.log(error);
