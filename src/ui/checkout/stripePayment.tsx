@@ -157,7 +157,6 @@ const PaymentForm = ({
 
       const validatedBillingAddress = addressSchema.safeParse(billingAddress);
       const validatedShippingAddress = addressSchema.safeParse(shippingAddress);
-      console.log({ validatedBillingAddress, validatedShippingAddress });
 
       // when billing address form is visible we display billing errors inline under fields
       if (!validatedBillingAddress.success && !sameAsShipping) {
